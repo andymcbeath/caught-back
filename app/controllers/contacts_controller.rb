@@ -12,15 +12,14 @@ class ContactsController < ApplicationController
     )
     render json: contact.as_json
   end
-end
 
-def update
-  contact = Contact.find_by(id: params[:id])
-  contact.update(
-    firstName: params[:firstName] || contact.firstName,
-    lastName: params[:lastName] || contact.lastName,
-    email: params[:email] || contact.email,
-  )
-  render json: contact.as_json
+  def update
+    contact = Contact.find_by(id: params[:id])
+    contact.update(
+      firstName: params[:firstName] || contact.firstName,
+      lastName: params[:lastName] || contact.lastName,
+      email: params[:email] || contact.email,
+    )
+    render json: contact.as_json
+  end
 end
-
