@@ -1,11 +1,6 @@
 class BookingsController < ApplicationController
-  def index
-    bookings = Booking.all
-    render json: bookings.as_json
-  end
-
   def create
-    booking = Booking.create(
+    booking = Booking.create!(
       firstName: params[:firstName],
       lastName: params[:lastName],
       email: params[:email],

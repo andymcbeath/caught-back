@@ -1,11 +1,6 @@
 class ContactsController < ApplicationController
-  def index
-    contacts = Contact.all
-    render json: contacts.as_json
-  end
-
   def create
-    contact = Contact.create(
+    contact = Contact.create!(
       firstName: params[:firstName],
       lastName: params[:lastName],
       email: params[:email],
