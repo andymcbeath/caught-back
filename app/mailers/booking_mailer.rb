@@ -1,8 +1,8 @@
 class BookingMailer < ApplicationMailer
-  default from: "caughtsteelinband@gmail.com"
+  default from: ENV["GMAIL_USERNAME"]
 
-  def booking_email
-    @booking = params[:booking]
-    mail(to: "caughtsteelinband@gmail.com", subject: "Test email")
+  def booking_confirmation(booking)
+    @booking = booking
+    mail(to: ENV["GMAIL_ADDRESS"], subject: "New Booking!")
   end
 end

@@ -1,11 +1,12 @@
 class BookingsController < ApplicationController
   def create
-    booking = Booking.create!(
+    @booking = Booking.create!(
       firstName: params[:firstName],
       lastName: params[:lastName],
       email: params[:email],
       event: params[:event],
     )
-    render json: booking.as_json
+    BookingMailer.booking_confirmation(@booking).deliver_now
+    render json: @booking.as_json
   end
 end
